@@ -5,7 +5,6 @@ class Event:
     
 
     # events will be determined either a meeting or a task, then the title will be given, then description, then date, then time of day
-
     def __init__(self, title, description, datetime):
 
         if (type(title) != str):
