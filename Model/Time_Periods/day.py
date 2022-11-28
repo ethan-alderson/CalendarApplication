@@ -10,9 +10,9 @@ class Day:
         self.tasks = []
         self.date = date
 
-
+    # Adds an event to this day
     def addEvent(self, newEvent):
-        
+
         if (type(newEvent) != Event):
             raise TypeError("Invalid input for addEvent.")
 
