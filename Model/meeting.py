@@ -9,4 +9,5 @@ class Meeting(Event):
         if (type(recipient) != str):
             raise TypeError("Invalid input for recipient.")
 
+        # could introduce a recipient class?
         self.recipient = recipient
