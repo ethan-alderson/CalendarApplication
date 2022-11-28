@@ -17,6 +17,7 @@ class Year:
         self.leapyear = leapyear
         self.months = []
 
+        # define a dictionary of the months and their lengths to initialize the year
         MONTHSDICT = { "January" : 31,
         "February" : 28,
         "March" : 31,
