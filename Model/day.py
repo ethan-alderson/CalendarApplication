@@ -1,4 +1,4 @@
-from Model.event import Event
+from event import Event
 from datetime import date
 
 class Day:
