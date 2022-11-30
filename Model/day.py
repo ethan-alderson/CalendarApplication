@@ -13,10 +13,7 @@ class Day:
 
     # Adds an event to this day
     def addEvent(self, newEvent):
-
-        if (type(newEvent) != Event):
-            raise TypeError("Invalid input for addEvent.")
-
+        
         for k, v in self.events:
             if newEvent.startHour > k and newEvent.endHour < v.endHour:
                 raise ValueError("Cannot add an event with conflicting event times.")
