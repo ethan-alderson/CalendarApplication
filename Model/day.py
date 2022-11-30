@@ -5,9 +5,10 @@ class Day:
     def __init__(self, date):
 
         if (type(date) != date):
-            raise TypeError("Invalid input for addEvent.")
+            raise TypeError("Invalid input for Day constructor.")
 
-        self.tasks = []
+        # keys will be start hours
+        self.events = {}
         self.date = date
 
     # Adds an event to this day
@@ -16,4 +17,12 @@ class Day:
         if (type(newEvent) != Event):
             raise TypeError("Invalid input for addEvent.")
 
-        self.tasks.append(newEvent)
+        for k, v in self.events:
+            if newEvent.startHour > k and newEvent.endHour < v.endHour:
+                raise ValueError("Cannot add an event with conflicting event times.")
+
+        else:
+            self.events[newEvent.startHour] = newEvent
+
+
+# could do events with a dictionary with time as the key
