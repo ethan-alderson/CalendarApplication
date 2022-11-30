@@ -7,12 +7,6 @@ class Year:
 
     def __init__(self, calendarYear, leapyear):
 
-        if (type(leapyear) != bool):
-            raise TypeError("Invalid argument for parameter leapyear.")
-
-        if (type(calendarYear) != int):
-            raise TypeError("Invalid argument for parameter calendarYear.")
-
         self.calendarYear = calendarYear
         self.leapyear = leapyear
         self.months = []
