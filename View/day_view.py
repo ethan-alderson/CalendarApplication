@@ -7,7 +7,10 @@ class DayView:
         self.day = day
 
     def display(self):
-
+        
+        print("-" * 27)
+        
         for startHour, event in self.day.events.values():
-            print("-" * 27)
             print('|' + ':>25'.format(event.title) + f'{startHour}:{event.startMinute} -> {event.endHour}:{event.endMinute} |')
+
+        print("-" * 27)
