@@ -2,14 +2,11 @@ from event import Event
 from datetime import date
 
 class Day:
-    def __init__(self, date):
-
-        if (type(date) != date):
-            raise TypeError("Invalid input for Day constructor.")
+    def __init__(self, year, month, day):
 
         # keys will be start hours
         self.events = {}
-        self.date = date
+        self.date = date(year, month, day)
 
     # Adds an event to this day
     def addEvent(self, newEvent):
