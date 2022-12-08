@@ -56,27 +56,19 @@
         "documentation": {}
     },
     {
-        "label": "Day",
-        "importPath": "day",
-        "description": "day",
-        "isExtraImport": true,
-        "detail": "day",
-        "documentation": {}
-    },
-    {
-        "label": "Day",
-        "importPath": "day",
-        "description": "day",
-        "isExtraImport": true,
-        "detail": "day",
-        "documentation": {}
-    },
-    {
         "label": "Month",
         "importPath": "month",
         "description": "month",
         "isExtraImport": true,
         "detail": "month",
+        "documentation": {}
+    },
+    {
+        "label": "Day",
+        "importPath": "day",
+        "description": "day",
+        "isExtraImport": true,
+        "detail": "day",
         "documentation": {}
     },
     {
@@ -104,7 +96,31 @@
         "documentation": {}
     },
     {
+        "label": "Month",
+        "importPath": "model.month",
+        "description": "model.month",
+        "isExtraImport": true,
+        "detail": "model.month",
+        "documentation": {}
+    },
+    {
+        "label": "Month",
+        "importPath": "model.month",
+        "description": "model.month",
+        "isExtraImport": true,
+        "detail": "model.month",
+        "documentation": {}
+    },
+    {
         "label": "day_view",
+        "importPath": "view",
+        "description": "view",
+        "isExtraImport": true,
+        "detail": "view",
+        "documentation": {}
+    },
+    {
+        "label": "month_view",
         "importPath": "view",
         "description": "view",
         "isExtraImport": true,
@@ -160,7 +176,7 @@
         "kind": 6,
         "importPath": "model.month",
         "description": "model.month",
-        "peekOfCode": "class Month:\n    # Constructor for a month, in a year, containing a certain number of empty days\n    def __init__(self, name, year, monthNumber, monthLength):\n        if (type(name) != str):\n            raise TypeError(\"Invalid input for name.\")\n        self.name = name\n        self.days = []\n        if (type(year) != int):\n            raise TypeError(\"Invalid input for month's year.\")\n        if (type(monthNumber) != int):",
+        "peekOfCode": "class Month:\n    # Constructor for a month, in a year, containing a certain number of empty days\n    def __init__(self, name, year, monthNumber, monthLength):\n        self.name = name\n        self.days = []\n        self.monthNumber = monthNumber\n        self.monthLength = monthLength\n        if (monthNumber > 12):\n            raise ValueError(\"Cannot have a year with monthNumber greater than 12.\")\n        if (monthLength != 28 and monthLength != 29 and monthLength != 30 and monthLength != 31):",
         "detail": "model.month",
         "documentation": {}
     },
@@ -201,11 +217,20 @@
         "documentation": {}
     },
     {
+        "label": "MonthView",
+        "kind": 6,
+        "importPath": "view.month_view",
+        "description": "view.month_view",
+        "peekOfCode": "class MonthView:\n    def __init__(self, month: Month):\n        self.month = month\n        self.weeks = []\n    def display(self):\n        # print header\n        print(\"-\" * 91)\n        print(\"| \" + self.month.name + \" \" * (88 - len(self.month.name)) + \"|\")\n        print(\"-\" * 91)\n        # break the month into 7 day blocks",
+        "detail": "view.month_view",
+        "documentation": {}
+    },
+    {
         "label": "d1",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "d1 = Day(2022, 1, 1)\ndv1 = day_view.DayView(d1)\ntooLong = \"*\" * 26\n# e1 = Event(tooLong, \"First meeting\", 6, 0, 7, 0)\ne2 = Event(\"Meeting 2\", \"First meeting\", 14, 15, 16, 30)\ne3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\ndv1.display()",
+        "peekOfCode": "d1 = Day(2022, 1, 1)\ndv1 = day_view.DayView(d1)\ntooLong = \"*\" * 26\n# e1 = Event(tooLong, \"First meeting\", 6, 0, 7, 0)\ne2 = Event(\"Meeting 2\", \"First meeting\", 14, 15, 16, 30)\ne3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\n# dv1.display()",
         "detail": "main",
         "documentation": {}
     },
@@ -214,7 +239,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "dv1 = day_view.DayView(d1)\ntooLong = \"*\" * 26\n# e1 = Event(tooLong, \"First meeting\", 6, 0, 7, 0)\ne2 = Event(\"Meeting 2\", \"First meeting\", 14, 15, 16, 30)\ne3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\ndv1.display()",
+        "peekOfCode": "dv1 = day_view.DayView(d1)\ntooLong = \"*\" * 26\n# e1 = Event(tooLong, \"First meeting\", 6, 0, 7, 0)\ne2 = Event(\"Meeting 2\", \"First meeting\", 14, 15, 16, 30)\ne3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\n# dv1.display()\nm1 = Month(\"January\", 2022, 1, 28)",
         "detail": "main",
         "documentation": {}
     },
@@ -223,7 +248,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "tooLong = \"*\" * 26\n# e1 = Event(tooLong, \"First meeting\", 6, 0, 7, 0)\ne2 = Event(\"Meeting 2\", \"First meeting\", 14, 15, 16, 30)\ne3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\ndv1.display()",
+        "peekOfCode": "tooLong = \"*\" * 26\n# e1 = Event(tooLong, \"First meeting\", 6, 0, 7, 0)\ne2 = Event(\"Meeting 2\", \"First meeting\", 14, 15, 16, 30)\ne3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\n# dv1.display()\nm1 = Month(\"January\", 2022, 1, 28)\nmv1 = month_view.MonthView(m1)",
         "detail": "main",
         "documentation": {}
     },
@@ -232,7 +257,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "e2 = Event(\"Meeting 2\", \"First meeting\", 14, 15, 16, 30)\ne3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\ndv1.display()",
+        "peekOfCode": "e2 = Event(\"Meeting 2\", \"First meeting\", 14, 15, 16, 30)\ne3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\n# dv1.display()\nm1 = Month(\"January\", 2022, 1, 28)\nmv1 = month_view.MonthView(m1)\nmv1.display()",
         "detail": "main",
         "documentation": {}
     },
@@ -241,7 +266,25 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "e3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\ndv1.display()",
+        "peekOfCode": "e3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\n# dv1.display()\nm1 = Month(\"January\", 2022, 1, 28)\nmv1 = month_view.MonthView(m1)\nmv1.display()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "m1",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "m1 = Month(\"January\", 2022, 1, 28)\nmv1 = month_view.MonthView(m1)\nmv1.display()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "mv1",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "mv1 = month_view.MonthView(m1)\nmv1.display()",
         "detail": "main",
         "documentation": {}
     }

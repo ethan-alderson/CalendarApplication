@@ -1,7 +1,9 @@
 
 from view import day_view
+from view import month_view
 from model.day import Day
 from model.event import Event
+from model.month import Month
 
 d1 = Day(2022, 1, 1)
 dv1 = day_view.DayView(d1)
@@ -15,4 +17,10 @@ e3 = Event("Conflicting meeting", "First meeting", 15, 0, 17, 0)
 d1.addEvent(e2)
 d1.addEvent(e3)
 
-dv1.display()
+# dv1.display()
+
+m1 = Month("January", 2022, 1, 28)
+
+mv1 = month_view.MonthView(m1)
+
+mv1.display()
