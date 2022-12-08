@@ -9,7 +9,7 @@ class Day:
         self.date = date(year, month, day)
 
     # Adds an event to this day
-    def addEvent(self, newEvent):
+    def addEvent(self, newEvent: Event):
         
         for k, v in self.events:
             if newEvent.startHour > k and newEvent.endHour < v.endHour:
