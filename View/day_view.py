@@ -1,5 +1,5 @@
 
-from Model.day import Day
+from model.day import Day
 
 class DayView:
     """ Represents the UI view of a given day """
@@ -8,9 +8,12 @@ class DayView:
 
     def display(self):
         
-        print("-" * 27)
+        print("-" * 46)
+        print("| " + str(self.day.date) + " " * 33 + "|") 
+        print("-" * 46)
         
         for event in self.day.events:
-            print('|' + ':>25'.format(event.title) + f'{event.startTime.hour}:{event.startTime.minute} -> {event.endTime.hour}:{event.endTime.minute} |')
+            lineString = f'| {event.title} : {str(event.startTime)[:-3]} -> {str(event.endTime)[:-3]}'
+            print(lineString + " " * (45 - len(lineString)) + "|")
 
-        print("-" * 27)
+        print("-" * 46)
