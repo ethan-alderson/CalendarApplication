@@ -1,4 +1,4 @@
-from Model.calendar import Calendar
+from calendar import Calendar
 
 
 class CalendarView:
