@@ -73,7 +73,7 @@ class WeekView:
                 if position < 0:
                     print("Position cannot be negative.")
                     
-                if position >= len(self.days):
+                if position > len(self.days):
                     print("Position out of bounds.")
                 
                 dayViewer = DayView(self.days[position - 1])
