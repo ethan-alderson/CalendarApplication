@@ -33,11 +33,7 @@ class MonthView:
         
 
     def handle_month_options(self, parentYear: Year):
-        print(f'Month: {self.month.name}')
-        print(f'a) View week')
-        print(f'b) View day')
-        print(f'c) View {parentYear}.')
-        
+
         viewingMonth = True
         
         while (viewingMonth):
