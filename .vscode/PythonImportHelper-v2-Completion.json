@@ -32,14 +32,6 @@
         "documentation": {}
     },
     {
-        "label": "date",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
         "label": "Event",
         "importPath": "event",
         "description": "event",
@@ -53,22 +45,6 @@
         "description": "event",
         "isExtraImport": true,
         "detail": "event",
-        "documentation": {}
-    },
-    {
-        "label": "Month",
-        "importPath": "month",
-        "description": "month",
-        "isExtraImport": true,
-        "detail": "month",
-        "documentation": {}
-    },
-    {
-        "label": "Day",
-        "importPath": "day",
-        "description": "day",
-        "isExtraImport": true,
-        "detail": "day",
         "documentation": {}
     },
     {
@@ -96,6 +72,14 @@
         "documentation": {}
     },
     {
+        "label": "Day",
+        "importPath": "model.day",
+        "description": "model.day",
+        "isExtraImport": true,
+        "detail": "model.day",
+        "documentation": {}
+    },
+    {
         "label": "Month",
         "importPath": "model.month",
         "description": "model.month",
@@ -109,6 +93,22 @@
         "description": "model.month",
         "isExtraImport": true,
         "detail": "model.month",
+        "documentation": {}
+    },
+    {
+        "label": "Year",
+        "importPath": "model.year",
+        "description": "model.year",
+        "isExtraImport": true,
+        "detail": "model.year",
+        "documentation": {}
+    },
+    {
+        "label": "Year",
+        "importPath": "model.year",
+        "description": "model.year",
+        "isExtraImport": true,
+        "detail": "model.year",
         "documentation": {}
     },
     {
@@ -121,6 +121,22 @@
     },
     {
         "label": "month_view",
+        "importPath": "view",
+        "description": "view",
+        "isExtraImport": true,
+        "detail": "view",
+        "documentation": {}
+    },
+    {
+        "label": "week_view",
+        "importPath": "view",
+        "description": "view",
+        "isExtraImport": true,
+        "detail": "view",
+        "documentation": {}
+    },
+    {
+        "label": "year_view",
         "importPath": "view",
         "description": "view",
         "isExtraImport": true,
@@ -158,7 +174,7 @@
         "kind": 6,
         "importPath": "model.event",
         "description": "model.event",
-        "peekOfCode": "class Event:\n    # events will be determined either a meeting or a task, then the title will be given, then description, then date, then time of day\n    def __init__(self, title, description, startHour, startMinute, endHour, endMinute):\n        if len(title) > 25:\n            raise ValueError(\"Title must be 25 characters or less.\")        \n        self.title = title\n        self.description = description\n        self.startTime = time(startHour, startMinute, 0)\n        self.endTime = time(endHour, endMinute, 0)",
+        "peekOfCode": "class Event:\n    # events will be determined either a meeting or a task, then the title will be given, then description, then date, then time of day\n    def __init__(self, title, description, startHour, startMinute, endHour, endMinute):\n        if len(title) > 19:\n            raise ValueError(\"Title must be 25 characters or less.\")        \n        self.title = title\n        self.description = description\n        self.startTime = time(startHour, startMinute, 0)\n        self.endTime = time(endHour, endMinute, 0)",
         "detail": "model.event",
         "documentation": {}
     },
@@ -212,7 +228,7 @@
         "kind": 6,
         "importPath": "view.day_view",
         "description": "view.day_view",
-        "peekOfCode": "class DayView:\n    \"\"\" Represents the UI view of a given day \"\"\"\n    def __init__(self, day: Day) -> None:\n        self.day = day\n    def display(self):\n        print(\"-\" * 46)\n        print(\"| \" + str(self.day.date) + \" \" * 33 + \"|\") \n        print(\"-\" * 46)\n        for event in self.day.events:\n            lineString = f'| {event.title} : {str(event.startTime)[:-3]} -> {str(event.endTime)[:-3]}'",
+        "peekOfCode": "class DayView:\n    \"\"\" Represents the UI view of a given day \"\"\"\n    def __init__(self, day: Day) -> None:\n        self.day = day\n    def display(self):\n        print(\"-\" * 40)\n        print(\"| \" + str(self.day.date) + \" \" * 27 + \"|\") \n        print(\"-\" * 460)\n        for event in self.day.events:\n            lineString = f'| {event.title} : {str(event.startTime)[:-3]} -> {str(event.endTime)[:-3]}'",
         "detail": "view.day_view",
         "documentation": {}
     },
@@ -223,6 +239,24 @@
         "description": "view.month_view",
         "peekOfCode": "class MonthView:\n    def __init__(self, month: Month):\n        self.month = month\n        self.weeks = []\n    def display(self):\n        # print header\n        print(\"-\" * 91)\n        print(\"| \" + self.month.name + \" \" * (88 - len(self.month.name)) + \"|\")\n        print(\"-\" * 91)\n        # break the month into 7 day blocks",
         "detail": "view.month_view",
+        "documentation": {}
+    },
+    {
+        "label": "WeekView",
+        "kind": 6,
+        "importPath": "view.week_view",
+        "description": "view.week_view",
+        "peekOfCode": "class WeekView:\n    \"\"\" Represents the GUI view of a given week\"\"\"\n    def __init__(self, days) -> None:\n        self.days = days\n    def display(self):\n        longestDay = self.days[0]\n        # get the longest day\n        for day in self.days:\n            if len(day.events) > len(longestDay.events):\n                longestDay = day    ",
+        "detail": "view.week_view",
+        "documentation": {}
+    },
+    {
+        "label": "YearView",
+        "kind": 6,
+        "importPath": "view.year_view",
+        "description": "view.year_view",
+        "peekOfCode": "class YearView:\n    def __init__(self, year: Year):\n        self.year = year\n    def display(self):\n        # print header\n        print(\"-\" * 91)\n        print(\"| \" + str(self.year.calendarYear) + \" \" * (88 - len(str(self.year.calendarYear))) + \"|\")\n        print(\"-\" * 91)\n        for month in self.year.months:\n            mv = MonthView(month)",
+        "detail": "view.year_view",
         "documentation": {}
     },
     {
@@ -257,7 +291,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "e2 = Event(\"Meeting 2\", \"First meeting\", 14, 15, 16, 30)\ne3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\n# dv1.display()\nm1 = Month(\"January\", 2022, 1, 28)\nmv1 = month_view.MonthView(m1)\nmv1.display()",
+        "peekOfCode": "e2 = Event(\"Meeting 2\", \"First meeting\", 14, 15, 16, 30)\ne3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\n# dv1.display()\nm1 = Month(\"January\", 2022, 1, 28)\nmv1 = month_view.MonthView(m1)\n# mv1.display()\nwv1 = week_view.WeekView(m1.days[:7])",
         "detail": "main",
         "documentation": {}
     },
@@ -266,7 +300,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "e3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\n# dv1.display()\nm1 = Month(\"January\", 2022, 1, 28)\nmv1 = month_view.MonthView(m1)\nmv1.display()",
+        "peekOfCode": "e3 = Event(\"Conflicting meeting\", \"First meeting\", 15, 0, 17, 0)\n# d1.addEvent(e1)\nd1.addEvent(e2)\nd1.addEvent(e3)\n# dv1.display()\nm1 = Month(\"January\", 2022, 1, 28)\nmv1 = month_view.MonthView(m1)\n# mv1.display()\nwv1 = week_view.WeekView(m1.days[:7])\n# wv1.display()",
         "detail": "main",
         "documentation": {}
     },
@@ -275,7 +309,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "m1 = Month(\"January\", 2022, 1, 28)\nmv1 = month_view.MonthView(m1)\nmv1.display()",
+        "peekOfCode": "m1 = Month(\"January\", 2022, 1, 28)\nmv1 = month_view.MonthView(m1)\n# mv1.display()\nwv1 = week_view.WeekView(m1.days[:7])\n# wv1.display()\ny1 = Year(2022, True)\nyv1 = year_view.YearView(y1)\nyv1.display()",
         "detail": "main",
         "documentation": {}
     },
@@ -284,7 +318,34 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "mv1 = month_view.MonthView(m1)\nmv1.display()",
+        "peekOfCode": "mv1 = month_view.MonthView(m1)\n# mv1.display()\nwv1 = week_view.WeekView(m1.days[:7])\n# wv1.display()\ny1 = Year(2022, True)\nyv1 = year_view.YearView(y1)\nyv1.display()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "wv1",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "wv1 = week_view.WeekView(m1.days[:7])\n# wv1.display()\ny1 = Year(2022, True)\nyv1 = year_view.YearView(y1)\nyv1.display()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "y1",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "y1 = Year(2022, True)\nyv1 = year_view.YearView(y1)\nyv1.display()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "yv1",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "yv1 = year_view.YearView(y1)\nyv1.display()",
         "detail": "main",
         "documentation": {}
     }

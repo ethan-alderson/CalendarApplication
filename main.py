@@ -1,9 +1,12 @@
 
-from view import day_view
-from view import month_view
-from model.day import Day
-from model.event import Event
-from model.month import Month
+from View import day_view
+from View import month_view
+from View import week_view
+from Model.day import Day
+from Model.event import Event
+from Model.month import Month
+from Model.year import Year
+from View import year_view
 
 d1 = Day(2022, 1, 1)
 dv1 = day_view.DayView(d1)
@@ -23,4 +26,11 @@ m1 = Month("January", 2022, 1, 28)
 
 mv1 = month_view.MonthView(m1)
 
-mv1.display()
+# mv1.display()
+
+wv1 = week_view.WeekView(m1.days[:7])
+# wv1.display()
+
+y1 = Year(2022, True)
+yv1 = year_view.YearView(y1)
+yv1.display()

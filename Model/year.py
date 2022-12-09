@@ -1,7 +1,5 @@
 
-from month import Month
-from day import Day
-from datetime import date
+from .month import Month
 
 class Year:
 
@@ -29,5 +27,7 @@ class Year:
             MONTHSDICT["February"] = 29
 
         # define Months
-        for i , (month, numberOfDays) in enumerate(MONTHSDICT):
-            self.months.append(Month(month, calendarYear, i, numberOfDays))
+        for month, numberOfDays in MONTHSDICT.items():
+            counter = 1
+            self.months.append(Month(month, calendarYear, counter, numberOfDays))
+            counter += 1
