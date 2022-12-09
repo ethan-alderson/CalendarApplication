@@ -26,7 +26,7 @@ class Month:
         
         # break the month into 7 day blocks
         for i in range(1, 6):
-            if len(self.month.days) >= i * 7:
-                self.weeks.append(self.month.days[(i-1)*7:(i*7)])
+            if len(self.days) >= i * 7:
+                self.weeks.append(self.days[(i-1)*7:(i*7)])
             else:
-                self.weeks.append(self.month.days[(i-1)*7:])
+                self.weeks.append(self.days[(i-1)*7:])

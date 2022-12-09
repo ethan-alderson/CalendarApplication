@@ -1,8 +1,7 @@
 
 from Model.day import Day
 from Model.month import Month
-from View.month_view import MonthView
-from Model.event import Event
+# from View.month_view import MonthView
 from Model.meeting import Meeting
 from Model.task import Task
 
@@ -49,8 +48,9 @@ class DayView:
             if option == 'c':
                 viewingDay = False
                 
-            monthviewer = MonthView(parentMonth)
-            monthviewer.display()
+            # monthviewer = MonthView(parentMonth)
+            # monthviewer.display()
+            # monthviewer.handle_month_options()
         
         
         

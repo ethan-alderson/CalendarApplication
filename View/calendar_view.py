@@ -6,13 +6,14 @@ class CalendarView:
     def __init__(self, calendar: Calendar) -> None:
         self.calendar = calendar
     
-    def handle_user_input(self):
-        
+    def display(self):
+        print(f'Welcome to your Calendar! This is a calendar of your events from {self.calendar.years[0]} to {self.calendar.years[-1]}!')
+    
+    def handle_calendar_options(self):
         viewingCalendar = True
         
         while(viewingCalendar):
-        
-            print(f'Welcome to your Calendar! This is a calendar of your events from {self.calendar.years[0]} to {self.calendar.years[-1]}!')
+    
             year = int(input('Select a year to get started!'))
         
             if year < 2000 or year > 2099:

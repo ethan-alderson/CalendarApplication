@@ -1,5 +1,5 @@
 
-from year import Year
+from .year import Year
 
 # represents a calendar
 class Calendar:

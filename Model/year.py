@@ -27,7 +27,7 @@ class Year:
             MONTHSDICT["February"] = 29
 
         # define Months
-        for month, numberOfDays in MONTHSDICT.items():
+        for name, numberOfDays in MONTHSDICT.items():
             counter = 1
-            self.months.append(Month(month, calendarYear, counter, numberOfDays))
+            self.months.append(Month(name, calendarYear, counter, numberOfDays))
             counter += 1

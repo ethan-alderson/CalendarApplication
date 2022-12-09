@@ -1,5 +1,5 @@
 
-from event import Event
+from .event import Event
 
 class Meeting(Event):
 

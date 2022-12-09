@@ -2,7 +2,7 @@
 from .month_view import MonthView
 from Model.year import Year
 from Model.calendar import Calendar
-from View.calendar_view import CalendarView
+# from View.calendar_view import CalendarView
 
 class YearView:
     
@@ -50,8 +50,10 @@ class YearView:
                 
                 monthViewer = MonthView(self.year.months[position - 1])
                 monthViewer.display()
+                monthViewer.handle_month_options()
                 
             if option == 'b':
-                
-                calendarViewer = CalendarView(parentCalendar)
-                calendarViewer.display()
+                viewingYear = False
+                # calendarViewer = CalendarView(parentCalendar)
+                # calendarViewer.display()
+                # calendarViewer.handle_calendar_options()

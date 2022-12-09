@@ -1,5 +1,5 @@
 
-from event import Event
+from .event import Event
 
 # may need to rework the priority system, !!! or number system?
 class Task(Event):

@@ -3,7 +3,7 @@ from Model.month import Month
 from Model.year import Year 
 from View.day_view import DayView
 from View.week_view import WeekView
-from View.year_view import YearView
+# from View.year_view import YearView
 
 
 class MonthView:
@@ -62,7 +62,8 @@ class MonthView:
                     print("Position out of bounds.")
                 
                 weekViewer = WeekView(self.month.weeks[position - 1])
-                dayViewer.display()
+                weekViewer.display()
+                weekViewer.handle_week_options()
                 
             if option == 'b':
                 
@@ -78,8 +79,11 @@ class MonthView:
                 
                 dayViewer = DayView(self.days[position - 1])
                 dayViewer.display()
+                dayViewer.handle_day_options()
+                
             
             if option == 'c':
-                
-                yearViewer = YearView(parentYear)
-                yearViewer.display()
+                viewingMonth = False
+                # yearViewer = YearView(parentYear)
+                # yearViewer.display()
+                # yearViewer.handle_year_options()

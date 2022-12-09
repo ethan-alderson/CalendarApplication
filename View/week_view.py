@@ -1,8 +1,7 @@
 
-from Model.day import Day
 from Model.month import Month
 from View.day_view import DayView
-from View.month_view import MonthView
+# from View.month_view import MonthView
 
 class WeekView:
     """ Represents the GUI view of a given week"""
@@ -78,11 +77,13 @@ class WeekView:
                 
                 dayViewer = DayView(self.days[position - 1])
                 dayViewer.display()
+                dayViewer.handle_day_options()
                 
             if option == 'b':
                 viewingWeek = False
-                monthViewer = MonthView(parentMonth)
-                monthViewer.display()
+                # monthViewer = MonthView(parentMonth)
+                # monthViewer.display()
+                # monthViewer.handle_month_options()
                                
             
             
