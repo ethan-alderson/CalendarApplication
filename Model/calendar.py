@@ -5,12 +5,8 @@ from year import Year
 class Calendar:
     
     def __init__(self, name):
-        self.years = {}
+        self.years = []
 
         for i in range(99):
-            self.years[2000 + i] = Year(2000 + i, (2000 + i) % 4)
+            self.years.append(Year(2000 + i, (2000 + i) % 4))
     
-    def addYear(self, year):
-        self.years[year.calendarYear] = year
-
-
