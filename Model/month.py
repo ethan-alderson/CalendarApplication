@@ -21,3 +21,12 @@ class Month:
         # fill the month with empty days of the correct date
         for i in range(monthLength):
             self.days.append(Day(year, monthNumber, i + 1))
+            
+        self.weeks = []
+        
+        # break the month into 7 day blocks
+        for i in range(1, 6):
+            if len(self.month.days) >= i * 7:
+                self.weeks.append(self.month.days[(i-1)*7:(i*7)])
+            else:
+                self.weeks.append(self.month.days[(i-1)*7:])
