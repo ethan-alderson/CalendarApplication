@@ -1,6 +1,8 @@
 
 from Model.day import Day
 from Model.month import Month
+from View.day_view import DayView
+from View.month_view import MonthView
 
 class WeekView:
     """ Represents the GUI view of a given week"""
@@ -17,36 +19,71 @@ class WeekView:
                 longestDay = day    
         
         for day in self.days:
-            print("-" * 40, end='')
-        print("\r")
+            print('-' * 40, end='')
+        print('\r')
                   
         for day in self.days:
-            print("| " + str(day.date) + " " * 27 + "|", end='') 
-        print("\r")
+            print('| ' + str(day.date) + ' ' * 27 + '|', end='') 
+        print('\r')
         
         
         for day in self.days:
-            print("-" * 40, end='')
+            print('-' * 40, end='')
             
             
         for i in range(len(longestDay.events)):
             for day in self.days:
                 if len(day.events) < i:
-                    lineString = f'| {day.events[i].title} : {str(day.events[i].startTime)[:-3]} -> {str(day.events[i].endTime)[:-3]}' + " " * (39 - len(lineString)) + "|"
+                    lineString = f'| {day.events[i].title} : {str(day.events[i].startTime)[:-3]} -> {str(day.events[i].endTime)[:-3]}' + ' ' * (39 - len(lineString)) + '|'
                 else:
-                    lineString = " " * 39 + "|"
+                    lineString = ' ' * 39 + '|'
                     
-                print(lineString, end="")
+                print(lineString, end='')
         
         
         # for event in self.day.events:
         #     lineString = f'| {event.title} : {str(event.startTime)[:-3]} -> {str(event.endTime)[:-3]}'
-        #     print(lineString + " " * (45 - len(lineString)) + "|")
+        #     print(lineString + ' ' * (45 - len(lineString)) + '|')
 
-        # print("-" * 46)
+        # print('-' * 46)
         
         
     def handle_week_options(self, parentMonth: Month):
-        print(f'Week from {parentMonth.name}')
-        print(f'a) View Day')
-        print(f'b) Return to {parentMonth.name}.')
+        
+        viewingWeek = True
+        
+        while (viewingWeek):
+                
+            print(f'Week from {parentMonth.name}')
+            print(f'a) View Day')
+            print(f'b) Return to {parentMonth.name}.')
+        
+            option = input('Select an option (a, b): ')
+        
+            if option != 'a' and option != 'b':
+                print('Invalid option, select again.')
+                continue
+            
+            if option == 'a':
+                
+                gettingPosition = True
+                while (gettingPosition):
+                    position = int(input(f'Which day would you like to view (enter the position in the week, starting at 1): '))
+                
+                if position < 0:
+                    print("Position cannot be negative.")
+                    
+                if position >= len(self.days):
+                    print("Position out of bounds.")
+                
+                dayViewer = DayView(self.days[position - 1])
+                dayViewer.display()
+                
+            if option == 'b':
+                viewingWeek = False
+                monthViewer = MonthView(parentMonth)
+                monthViewer.display()
+                               
+            
+            
+        
