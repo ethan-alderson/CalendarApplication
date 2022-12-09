@@ -13,18 +13,40 @@ class CalendarView:
         viewingCalendar = True
         
         while(viewingCalendar):
-    
-            year = int(input('Select a year to get started: '))
+            
+            self.display()
+            
+            print(f'Name: {self.calendar.name}')
+            print(f'a) Select a Year')
+            print(f'b) Exit Program.')
+            
+            option = input('Select an option (a, b): ')
         
-            if year < 2000 or year > 2099:
-                print("Invalid year, try again.")
+            if option != 'a' and option != 'b':
+                print('Invalid option, select again.')
                 continue
-            else:
+            
+            if option == 'a':
+                
+                gettingYear = True
+                while(gettingYear):
+                    year = int(input('Select a year to get started: '))
+                
+                    if year < 2000 or year > 2099:
+                        print("Invalid year, try again.")
+                        continue
+                    else:
+                        gettingYear = False
+            
+        
                 yearToView = self.calendar.years[year - 2000]
                 
                 yearViewer = YearView(yearToView)
                 yearViewer.display()
-                yearViewer.handle_year_options(self)        
+                yearViewer.handle_year_options(self.calendar)   
+            
+            if option == 'b':
+                viewingCalendar = False     
         
         
 

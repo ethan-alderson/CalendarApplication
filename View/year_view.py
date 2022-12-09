@@ -25,32 +25,37 @@ class YearView:
         viewingYear = True
         
         while (viewingYear):
-                
+            
+            self.display()
+            
             print(f'Year: {self.year.calendarYear}')
             print(f'a) View a month')
-            print(f'b) View {parentCalendar.name}.')
+            print(f'b) Go Back.')
         
-            option = input('Select an option (a, b, c): ')
+            option = input('Select an option (a, b): ')
         
-            if option != 'a' and option != 'b' and option != 'c':
+            if option != 'a' and option != 'b':
                 print('Invalid option, select again.')
                 continue
             
             if option == 'a':
                 
                 gettingPosition = True
+                
                 while (gettingPosition):
                     position = int(input(f'Which month would you like to view (enter the position in the year, starting at 1): '))
                 
-                if position < 0:
-                    print("Position cannot be negative.")
+                    if position < 0:
+                        print("Position cannot be negative.")
                     
-                if position > 12:
-                    print("Position out of bounds.")
+                    elif position > 12:
+                        print("Position out of bounds.")
+                    else:
+                        gettingPosition = False
+                
                 
                 monthViewer = MonthView(self.year.months[position - 1])
-                monthViewer.display()
-                monthViewer.handle_month_options()
+                monthViewer.handle_month_options(self.year)
                 
             if option == 'b':
                 viewingYear = False

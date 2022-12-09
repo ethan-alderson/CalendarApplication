@@ -7,27 +7,32 @@ from Model.task import Task
 
 class DayView:
     """ Represents the UI view of a given day """
-    def __init__(self, day: Day, parentMonth: Month) -> None:
+    def __init__(self, day: Day) -> None:
         self.day = day
 
     def display(self):
         
         print("-" * 40)
         print("| " + str(self.day.date) + " " * 27 + "|") 
-        print("-" * 460)
+        print("-" * 40)
         
         for event in self.day.events:
             lineString = f'| {event.title} : {str(event.startTime)[:-3]} -> {str(event.endTime)[:-3]}'
             print(lineString + " " * (39 - len(lineString)) + "|")
 
         print("-" * 40)
-        
+    
+    
+    
+    
     def handle_day_options(self, parentMonth: Month):
 
         viewingDay = True
         
         while (viewingDay):
                 
+            self.display()
+            
             print(f'Date: {self.day.date}')
             print(f'a) Add Event')
             print(f'b) Remove Event')
@@ -69,7 +74,7 @@ class DayView:
         while (addingEvent):
             
             # collect data
-            title = input('Enter the meeting title: ')
+            title = input('Enter event title: ')
             description = input('Enter the meeting description: ')
             startTimeInput = input('Enter the meeting start time (No need for AM or PM, format in hh:mm): ')
             startAMOrPM = input('PM? (y/n): ')
@@ -81,7 +86,7 @@ class DayView:
                 recipient = input('Enter the meeting recipient: ')
                 
             if suboption == 'b':
-                priority = input('Enter task priority: ')
+                priority = int(input('Enter task priority: '))
             
             # parse startTime
             startHour, startMinute = startTimeInput.split(":")
@@ -108,11 +113,13 @@ class DayView:
                 newEvent = Task(title, description, startHour, startMinute, endHour, endMinute, priority)
             
             self.day.addEvent(newEvent)         
-            
+            addingEvent = False
+             
         if suboption == 'c':
             self.handle_day_options()
 
     def removeEventHandler(self):
+        
         suboption = input(f'Name the event you\'d like to remove: ')
         
         initialLength = len(self.day.events)

@@ -52,7 +52,10 @@ class WeekView:
         viewingWeek = True
         
         while (viewingWeek):
-                
+            
+            self.display()
+            
+            print('\r')               
             print(f'Week from {parentMonth.name}')
             print(f'a) View Day')
             print(f'b) Return to {parentMonth.name}.')
@@ -69,15 +72,17 @@ class WeekView:
                 while (gettingPosition):
                     position = int(input(f'Which day would you like to view (enter the position in the week, starting at 1): '))
                 
-                if position < 0:
-                    print("Position cannot be negative.")
+                    if position < 0:
+                        print("Position cannot be negative.")
                     
-                if position > len(self.days):
-                    print("Position out of bounds.")
+                    elif position > len(self.days):
+                        print("Position out of bounds.")
+                
+                    else:
+                        gettingPosition = False
                 
                 dayViewer = DayView(self.days[position - 1])
-                dayViewer.display()
-                dayViewer.handle_day_options()
+                dayViewer.handle_day_options(parentMonth)
                 
             if option == 'b':
                 viewingWeek = False

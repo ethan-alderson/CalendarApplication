@@ -37,11 +37,13 @@ class MonthView:
         viewingMonth = True
         
         while (viewingMonth):
-                
+            
+            self.display()
+            
             print(f'Month: {self.month.name}')
             print(f'a) View week')
             print(f'b) View day')
-            print(f'c) View {parentYear}.')
+            print(f'c) View {parentYear.calendarYear}.')
         
             option = input('Select an option (a, b, c): ')
         
@@ -55,15 +57,17 @@ class MonthView:
                 while (gettingPosition):
                     position = int(input(f'Which week would you like to view (enter the position in the month, starting at 1): '))
                 
-                if position < 0:
-                    print("Position cannot be negative.")
+                    if position < 0:
+                        print("Position cannot be negative.")
                     
-                if position > len(self.month.weeks):
-                    print("Position out of bounds.")
+                    elif position > len(self.month.weeks):
+                        print("Position out of bounds.")
+                
+                    else:
+                        gettingPosition = False
                 
                 weekViewer = WeekView(self.month.weeks[position - 1])
-                weekViewer.display()
-                weekViewer.handle_week_options()
+                weekViewer.handle_week_options(self.month)
                 
             if option == 'b':
                 
@@ -71,15 +75,17 @@ class MonthView:
                 while (gettingPosition):
                     position = int(input(f'Which day would you like to view (enter the position in the month, starting at 1): '))
                 
-                if position < 0:
-                    print("Position cannot be negative.")
+                    if position < 0:
+                        print("Position cannot be negative.")
                     
-                if position > len(self.month.days):
-                    print("Position out of bounds.")
+                    elif position > len(self.month.days):
+                        print("Position out of bounds.")
                 
-                dayViewer = DayView(self.days[position - 1])
-                dayViewer.display()
-                dayViewer.handle_day_options()
+                    else:
+                        gettingPosition = False
+                
+                dayViewer = DayView(self.month.days[position - 1])
+                dayViewer.handle_day_options(self.month)
                 
             
             if option == 'c':

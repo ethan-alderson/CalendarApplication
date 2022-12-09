@@ -40,6 +40,4 @@ from Model.calendar import Calendar
 
 calendar1 = Calendar("Test Calendar")
 cv1 = calendar_view.CalendarView(calendar1)
-
-cv1.display()
 cv1.handle_calendar_options()
