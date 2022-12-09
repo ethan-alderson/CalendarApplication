@@ -14,13 +14,13 @@ class CalendarView:
         
         while(viewingCalendar):
     
-            year = int(input('Select a year to get started!'))
+            year = int(input('Select a year to get started: '))
         
             if year < 2000 or year > 2099:
                 print("Invalid year, try again.")
                 continue
             else:
-                yearToView = self.calendar[year - 2000]
+                yearToView = self.calendar.years[year - 2000]
                 
                 yearViewer = YearView(yearToView)
                 yearViewer.display()
