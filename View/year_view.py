@@ -1,6 +1,7 @@
 
 from .month_view import MonthView
 from Model.year import Year
+from Model.calendar import Calendar
 
 class YearView:
     
@@ -17,3 +18,9 @@ class YearView:
             mv = MonthView(month)
             mv.display()
         
+
+    def handle_year_options(self, parentCalendar: Calendar):
+        print(f'Date: {self.day.date}')
+        print(f'a) Add Event')
+        print(f'b) Remove Event')
+        print(f'c) View {parentCalendar.name}.')

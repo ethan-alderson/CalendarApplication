@@ -3,8 +3,6 @@ from event import Event
 
 class Meeting(Event):
 
-    def __init__(self, title, description, datetime, recipient):
-        super().__init__(title, description, datetime)
-
-        # could introduce a recipient class?
+    def __init__(self, title, description, startHour, startMinute, endHour, endMinute, recipient):
+        super().__init__(title, description, startHour, startMinute, endHour, endMinute)
         self.recipient = recipient

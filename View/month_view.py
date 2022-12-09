@@ -1,18 +1,12 @@
 
 from Model.month import Month
+from Model.year import Year 
 
 class MonthView:
     
     def __init__(self, month: Month):
         self.month = month
         self.weeks = []
-
-    def display(self):
-        
-        # print header
-        print("-" * 91)
-        print("| " + self.month.name + " " * (88 - len(self.month.name)) + "|")
-        print("-" * 91)
         
         # break the month into 7 day blocks
         for i in range(1, 6):
@@ -20,6 +14,14 @@ class MonthView:
                 self.weeks.append(self.month.days[(i-1)*7:(i*7)])
             else:
                 self.weeks.append(self.month.days[(i-1)*7:])
+                
+
+    def display(self):
+        
+        # print header
+        print("-" * 91)
+        print("| " + self.month.name + " " * (88 - len(self.month.name)) + "|")
+        print("-" * 91)
                 
         # print each week
         for week in self.weeks:
@@ -34,8 +36,9 @@ class MonthView:
             print('\r')
             print(len(week) * 13 * "-")
         
-        # print(self.weeks)
-                
-        # month display is 70 characters long, 
-        
-        # call each square a 10x10, with 8x8 interior
+
+    def handle_month_options(self, parentYear: Year):
+        print(f'Month: {self.month.name}')
+        print(f'a) View week')
+        print(f'b) View day')
+        print(f'c) View {parentYear}.')

@@ -1,5 +1,6 @@
 
 from Model.day import Day
+from Model.month import Month
 
 class WeekView:
     """ Represents the GUI view of a given week"""
@@ -43,3 +44,9 @@ class WeekView:
         #     print(lineString + " " * (45 - len(lineString)) + "|")
 
         # print("-" * 46)
+        
+        
+    def handle_week_options(self, parentMonth: Month):
+        print(f'Week from {parentMonth.name}')
+        print(f'a) View Day')
+        print(f'b) Return to {parentMonth.name}.')
