@@ -7,7 +7,7 @@ class CalendarView:
         self.calendar = calendar
     
     def display(self):
-        print(f'Welcome to your Calendar! This is a calendar of your events from {self.calendar.years[0]} to {self.calendar.years[-1]}!')
+        print(f'Welcome to your Calendar! This is a calendar of your events from {self.calendar.years[0].calendarYear} to {self.calendar.years[-1].calendarYear}!')
     
     def handle_calendar_options(self):
         viewingCalendar = True
