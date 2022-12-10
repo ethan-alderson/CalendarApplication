@@ -11,6 +11,5 @@ class Calendar:
         self.lastYear = lastYear
 
         for i in range(firstYear, lastYear + 1):
-            print("yearrrrrrr madeee")
-            self.years.append(Year(i, i % 4))
+            self.years.append(Year(i))
     

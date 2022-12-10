@@ -75,10 +75,10 @@ class DayView:
             
             # collect data
             title = input('Enter event title: ')
-            description = input('Enter the meeting description: ')
-            startTimeInput = input('Enter the meeting start time (No need for AM or PM, format in hh:mm): ')
+            description = input('Enter the event description: ')
+            startTimeInput = input('Enter the event start time (No need for AM or PM, format in hh:mm): ')
             startAMOrPM = input('PM? (y/n): ')
-            endTimeInput = input('Enter the meeting end time in military (hh:mm): ')
+            endTimeInput = input('Enter the event end time (No need for AM or PM, format in hh:mm): ')
             endAMorPM = input('PM? (y/n): ')
             
             

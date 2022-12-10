@@ -3,10 +3,9 @@ from .month import Month
 
 class Year:
 
-    def __init__(self, calendarYear, leapyear):
+    def __init__(self, calendarYear):
 
         self.calendarYear = calendarYear
-        self.leapyear = leapyear
         self.months = []
 
         # define a dictionary of the months and their lengths to initialize the year
@@ -23,8 +22,6 @@ class Year:
         "November" : 30,
         "December" : 31 }
 
-        if leapyear:
-            MONTHSDICT["February"] = 29
 
         # define Months
         

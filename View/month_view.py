@@ -12,11 +12,11 @@ class MonthView:
         self.month = month
 
     def display(self):
-        
+        """ Displays the month"""
         # print header
         print("-" * 91)
         print("| " + self.month.name + " " * (88 - len(self.month.name)) + "|")
-        print("-" * 91 + str(self.month.monthNumber))
+        print("-" * 91)
 
                 
         # print each week
@@ -35,7 +35,7 @@ class MonthView:
                 elif len(day.events) == 1:
                     innerString = "1 event  "
                 else:
-                    innerString = str(len(day.events)) + " events  "
+                    innerString = str(len(day.events)) + " events "
 
                 print("| " + innerString + " |", end="")
 
@@ -44,7 +44,11 @@ class MonthView:
         
 
     def handle_month_options(self, parentYear: Year):
+        """ Handles user inputs for the month
 
+        Args:
+            parentYear (Year): year to which this month belongs
+        """
         viewingMonth = True
         
         while (viewingMonth):
@@ -101,6 +105,3 @@ class MonthView:
             
             if option == 'c':
                 viewingMonth = False
-                # yearViewer = YearView(parentYear)
-                # yearViewer.display()
-                # yearViewer.handle_year_options()

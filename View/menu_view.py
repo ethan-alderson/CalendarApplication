@@ -9,7 +9,8 @@ class MenuView:
     def __init__(self):
         pass
 
-    def display(self):
+    @staticmethod
+    def display():
         
         selectingOption = True
         while(selectingOption):
