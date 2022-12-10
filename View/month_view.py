@@ -26,8 +26,18 @@ class MonthView:
             for day in week:
                 print("|-----------|", end="")
             print('\r')
+
             for day in week:
-                print("| Events: " + str(len(day.events)) + " |", end="")
+
+                if len(day.events) == 0:
+                    innerString = "         "
+                elif len(day.events) == 1:
+                    innerString = "1 event  "
+                else:
+                    innerString = str(len(day.events)) + " events  "
+
+                print("| " + innerString + " |", end="")
+
             print('\r')
             print(len(week) * 13 * "-")
         
