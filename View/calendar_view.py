@@ -41,7 +41,7 @@ class CalendarView:
                         gettingYear = False
             
         
-                yearToView = self.calendar.years[year - 2000]
+                yearToView = self.calendar.years[year - self.calendar.firstYear]
                 
                 yearViewer = YearView(yearToView)
                 yearViewer.display()

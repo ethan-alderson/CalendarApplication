@@ -9,7 +9,7 @@
 # from View import year_view
 from View import calendar_view
 from Model.calendar import Calendar
-
+from View import menu_view
 
 # d1 = Day(2022, 1, 1)
 # dv1 = day_view.DayView(d1)
@@ -38,6 +38,8 @@ from Model.calendar import Calendar
 # yv1 = year_view.YearView(y1)
 # # yv1.display()
 
-calendar1 = Calendar("Test Calendar")
-cv1 = calendar_view.CalendarView(calendar1)
-cv1.handle_calendar_options()
+# calendar1 = Calendar("Test Calendar")
+
+mv = menu_view.MenuView()
+
+mv.display()

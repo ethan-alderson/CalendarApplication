@@ -16,7 +16,8 @@ class MonthView:
         # print header
         print("-" * 91)
         print("| " + self.month.name + " " * (88 - len(self.month.name)) + "|")
-        print("-" * 91)
+        print("-" * 91 + str(self.month.monthNumber))
+
                 
         # print each week
         for week in self.month.weeks:
