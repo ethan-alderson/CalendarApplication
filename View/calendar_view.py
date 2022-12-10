@@ -48,7 +48,11 @@ class CalendarView:
                 yearViewer.handle_year_options(self.calendar)   
             
             if option == 'b':
-                viewingCalendar = False     
+                viewingCalendar = False
+
+                with open(self.calendar.name + ".txt", 'wb') as f:
+                    pickle.dump(self.calendar, f)
+
         
         
 
