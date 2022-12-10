@@ -8,14 +8,7 @@ class WeekView:
     def __init__(self, days) -> None:
         self.days = days
 
-    def display(self):
-        
-        longestDay = self.days[0]
-        
-        # get the longest day
-        for day in self.days:
-            if len(day.events) > len(longestDay.events):
-                longestDay = day    
+    def display(self):    
         
         for day in self.days:
             print('-' * 40, end='')
@@ -28,24 +21,30 @@ class WeekView:
         
         for day in self.days:
             print('-' * 40, end='')
-            
-            
+        
+        print('\r')
+
+        longestDay = self.days[0]
+        
+        # get the longest day
+        for day in self.days:
+            if len(day.events) > len(longestDay.events):
+                longestDay = day
+
         for i in range(len(longestDay.events)):
             for day in self.days:
-                if len(day.events) < i:
-                    lineString = f'| {day.events[i].title} : {str(day.events[i].startTime)[:-3]} -> {str(day.events[i].endTime)[:-3]}' + ' ' * (39 - len(lineString)) + '|'
+                if len(day.events) > i:
+                    eventString = f'{day.events[i].title} : {str(day.events[i].startTime)[:-3]} -> {str(day.events[i].endTime)[:-3]}'
+                    lineString = '| ' + eventString + ' ' * (37 - len(eventString)) + '|'
                 else:
-                    lineString = ' ' * 39 + '|'
+                    lineString = '|' + " " * 38 + '|'
                     
                 print(lineString, end='')
-        
-        
-        # for event in self.day.events:
-        #     lineString = f'| {event.title} : {str(event.startTime)[:-3]} -> {str(event.endTime)[:-3]}'
-        #     print(lineString + ' ' * (45 - len(lineString)) + '|')
 
-        # print('-' * 46)
-        
+            print('\r')
+
+        for day in self.days:
+            print('-' * 40, end='')
         
     def handle_week_options(self, parentMonth: Month):
         
