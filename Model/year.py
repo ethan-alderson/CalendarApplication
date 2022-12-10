@@ -28,5 +28,7 @@ class Year:
 
         # define Months
         
-        for i, (name, numberOfDays) in enumerate(MONTHSDICT.items()):
-            self.months.append(Month(name, calendarYear, i, numberOfDays))
+        counter = 1
+        for name, numberOfDays in MONTHSDICT.items():
+            self.months.append(Month(name, calendarYear, counter, numberOfDays))
+            counter = counter + 1

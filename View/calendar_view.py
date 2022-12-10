@@ -44,7 +44,6 @@ class CalendarView:
                 yearToView = self.calendar.years[year - self.calendar.firstYear]
                 
                 yearViewer = YearView(yearToView)
-                yearViewer.display()
                 yearViewer.handle_year_options(self.calendar)   
             
             if option == 'b':
