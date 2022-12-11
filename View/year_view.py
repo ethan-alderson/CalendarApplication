@@ -11,9 +11,9 @@ class YearView:
         
     def display(self):
         # print header
-        print("-" * 91)
-        print("| " + str(self.year.calendarYear) + " " * (88 - len(str(self.year.calendarYear))) + "|")
-        print("-" * 91)
+        print('-' * 91)
+        print('| ' + str(self.year.calendarYear) + ' ' * (88 - len(str(self.year.calendarYear))) + '|')
+        print('-' * 91)
         
         for month in self.year.months:
             mv = MonthView(month)
@@ -46,10 +46,10 @@ class YearView:
                     position = int(input(f'Which month would you like to view (enter the position in the year, starting at 1): '))
                 
                     if position < 0:
-                        print("Position cannot be negative.")
+                        print('Position cannot be negative.')
                     
                     elif position > 12:
-                        print("Position out of bounds.")
+                        print('Position out of bounds.')
                     else:
                         gettingPosition = False
                 

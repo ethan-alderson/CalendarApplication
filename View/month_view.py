@@ -12,35 +12,35 @@ class MonthView:
         self.month = month
 
     def display(self):
-        """ Displays the month"""
+        """ Displays the month """
         # print header
-        print("-" * 91)
-        print("| " + self.month.name + " " * (88 - len(self.month.name)) + "|")
-        print("-" * 91)
+        print('-' * 91)
+        print('| ' + self.month.name + ' ' * (88 - len(self.month.name)) + '|')
+        print('-' * 91)
 
                 
         # print each week
         for week in self.month.weeks:
             for day in week:
-                print('| ' + str(day.date.day) + ' ' * (10 - len(str(day.date.day))) + '|', end="")
+                print('| ' + str(day.date.day) + ' ' * (10 - len(str(day.date.day))) + '|', end='')
             print('\r')
             for day in week:
-                print("|-----------|", end="")
+                print('|-----------|', end='')
             print('\r')
 
             for day in week:
 
                 if len(day.events) == 0:
-                    innerString = "         "
+                    innerString = '         '
                 elif len(day.events) == 1:
-                    innerString = "1 event  "
+                    innerString = '1 event  '
                 else:
-                    innerString = str(len(day.events)) + " events "
+                    innerString = str(len(day.events)) + ' events '
 
-                print("| " + innerString + " |", end="")
+                print('| ' + innerString + ' |', end='')
 
             print('\r')
-            print(len(week) * 13 * "-")
+            print(len(week) * 13 * '-')
         
 
     def handle_month_options(self, parentYear: Year):
@@ -73,10 +73,10 @@ class MonthView:
                     position = int(input(f'Which week would you like to view (enter the position in the month, starting at 1): '))
                 
                     if position < 0:
-                        print("Position cannot be negative.")
+                        print('Position cannot be negative.')
                     
                     elif position > len(self.month.weeks):
-                        print("Position out of bounds.")
+                        print('Position out of bounds.')
                 
                     else:
                         gettingPosition = False
@@ -91,10 +91,10 @@ class MonthView:
                     position = int(input(f'Which day would you like to view (enter the position in the month, starting at 1): '))
                 
                     if position < 0:
-                        print("Position cannot be negative.")
+                        print('Position cannot be negative.')
                     
                     elif position > len(self.month.days):
-                        print("Position out of bounds.")
+                        print('Position out of bounds.')
                 
                     else:
                         gettingPosition = False

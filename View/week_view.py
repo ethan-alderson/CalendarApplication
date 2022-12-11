@@ -4,7 +4,7 @@ from View.day_view import DayView
 # from View.month_view import MonthView
 
 class WeekView:
-    """ Represents the GUI view of a given week"""
+    """Represents the GUI view of a given week"""
     def __init__(self, days) -> None:
         self.days = days
 
@@ -37,7 +37,7 @@ class WeekView:
                     eventString = f'{day.events[i].title} : {str(day.events[i].startTime)[:-3]} -> {str(day.events[i].endTime)[:-3]}'
                     lineString = '| ' + eventString + ' ' * (37 - len(eventString)) + '|'
                 else:
-                    lineString = '|' + " " * 38 + '|'
+                    lineString = '|' + ' ' * 38 + '|'
                     
                 print(lineString, end='')
 
@@ -72,10 +72,10 @@ class WeekView:
                     position = int(input(f'Which day would you like to view (enter the position in the week, starting at 1): '))
                 
                     if position < 0:
-                        print("Position cannot be negative.")
+                        print('Position cannot be negative.')
                     
                     elif position > len(self.days):
-                        print("Position out of bounds.")
+                        print('Position out of bounds.')
                 
                     else:
                         gettingPosition = False

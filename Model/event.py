@@ -7,7 +7,7 @@ class Event:
     def __init__(self, title, description, startHour, startMinute, endHour, endMinute):
         
         if len(title) > 19:
-            raise ValueError("Title must be 25 characters or less.")        
+            raise ValueError('Title must be 25 characters or less.')        
         
         self.title = title
         self.description = description

@@ -13,10 +13,10 @@ class Month:
         self.monthLength = monthLength
 
         if (monthNumber > 12):
-            raise ValueError("Cannot have a year with monthNumber greater than 12.")
+            raise ValueError('Cannot have a year with monthNumber greater than 12.')
 
         if (monthLength != 28 and monthLength != 29 and monthLength != 30 and monthLength != 31):
-            raise ValueError("Invalid input for monthLength.")
+            raise ValueError('Invalid input for monthLength.')
         
         # fill the month with empty days of the correct date
         for i in range(monthLength):

@@ -35,7 +35,7 @@ class CalendarView:
                     year = int(input('Select a year to get started: '))
                 
                     if year < self.calendar.years[0].calendarYear or year > self.calendar.years[-1].calendarYear:
-                        print("Invalid year, try again.")
+                        print('Invalid year, try again.')
                         continue
                     else:
                         gettingYear = False
@@ -49,7 +49,7 @@ class CalendarView:
             if option == 'b':
                 viewingCalendar = False
 
-                with open(self.calendar.name + ".txt", 'wb') as f:
+                with open(self.calendar.name + '.txt', 'wb') as f:
                     pickle.dump(self.calendar, f)
 
         

@@ -41,7 +41,7 @@ class MenuView:
                 for char in name:
 
                     if char.lower() not in ACCEPTABLECHARS:
-                        print("Invalid calendar name, try again.")
+                        print('Invalid calendar name, try again.')
                         badName = True
                 
                 if badName == False:
@@ -55,7 +55,7 @@ class MenuView:
                 last = int(input('Input the last year in your calendar: '))
 
                 if last < first:
-                    print("Second year cannot be less than first year, try again.")
+                    print('Second year cannot be less than first year, try again.')
                 else:
                     gettingRangeSecond = False
                 
@@ -75,7 +75,7 @@ class MenuView:
                 for char in name:
 
                     if char.lower() not in ACCEPTABLECHARS:
-                        print("Invalid calendar name, try again.")
+                        print('Invalid calendar name, try again.')
                         badName = True
                 
                 if badName == False:
