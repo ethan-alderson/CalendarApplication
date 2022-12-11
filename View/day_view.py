@@ -4,6 +4,7 @@ from Model.month import Month
 # from View.month_view import MonthView
 from Model.meeting import Meeting
 from Model.task import Task
+import re
 
 class DayView:
     """ Represents the UI view of a given day """
@@ -52,12 +53,6 @@ class DayView:
             
             if option == 'c':
                 viewingDay = False
-                
-            # monthviewer = MonthView(parentMonth)
-            # monthviewer.display()
-            # monthviewer.handle_month_options()
-        
-        
         
     def addEventHandler(self):
         
@@ -76,11 +71,72 @@ class DayView:
             # collect data
             title = input('Enter event title: ')
             description = input('Enter the event description: ')
-            startTimeInput = input('Enter the event start time (No need for AM or PM, format in hh:mm): ')
-            startAMOrPM = input('PM? (y/n): ')
-            endTimeInput = input('Enter the event end time (No need for AM or PM, format in hh:mm): ')
-            endAMorPM = input('PM? (y/n): ')
             
+            # use regex to check time input format
+            gettingStart = True
+            while gettingStart:
+
+                startTimeInput = input('Enter the event start time (No need for AM or PM, format in hh:mm): ')
+                
+                test1 = re.match('^[0-9]{2}:[0-9]{2}$', startTimeInput)
+                test2 = re.match('^[1-9]{1}:[0-9]{2}$', startTimeInput)
+
+                if not test1 and not test2:
+                    print("Time must be hh:mm or h:mm")
+                    continue
+                else:
+                    startHour, startMinute = startTimeInput.split(":")
+                    startHour = int(startHour)
+                    startMinute = int(startMinute)
+                
+                if startHour > 12 or startHour < 1:
+                    print("Hour must be between 1 and 12")
+                elif startMinute > 59 or startMinute < 0:
+                    print("Minute must be between 0 and 59")
+                else:
+                    gettingStart = False
+
+            gettingPM = True
+            while gettingPM:
+                startAMOrPM = input('PM? (y/n): ')
+
+                if startAMOrPM.lower() != 'y' and startAMOrPM.lower() != 'n':
+                    print("Invalid input, try again.")
+                else:
+                    gettingPM = False
+
+            # use regex to check time input format
+            gettingEnd = True
+            while gettingEnd:
+
+                endTimeInput = input('Enter the event end time (No need for AM or PM, format in hh:mm): ')
+
+                test1 = re.match('^[0-9]{2}:[0-9]{2}$', endTimeInput)
+                test2 = re.match('^[1-9]{1}:[0-9]{2}$', endTimeInput)
+
+                if not test1 and not test2:
+                    print("Time must be hh:mm or h:mm")
+                    continue
+                else:
+                    endHour, endMinute = endTimeInput.split(":") 
+                    endHour = int(endHour)
+                    endMinute = int(endMinute)
+
+                if endHour > 12 or endHour < 1:
+                    print("Hour must be between 1 and 12")
+                elif endMinute > 59 or endMinute < 0:
+                    print("Minute must be between 0 and 59")
+                else:
+                    gettingEnd = False
+
+            gettingPM = True
+            while gettingPM:
+                endAMorPM = input('PM? (y/n): ')
+
+                if endAMorPM.lower() != 'y' and endAMorPM.lower() != 'n':
+                    print("Invalid input, try again.")
+                else:
+                    gettingPM = False
             
             if suboption == 'a':
                 recipient = input('Enter the meeting recipient: ')
