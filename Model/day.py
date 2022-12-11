@@ -17,6 +17,9 @@ class Day:
         
         added = False
 
+        if self.events != sorted(self.events):
+            raise ValueError(f'Events on day {str(self.date)} are not sorted, cannot add event.')
+
         if len(self.events) == 0:
             self.events.append(newEvent)
             added = True
