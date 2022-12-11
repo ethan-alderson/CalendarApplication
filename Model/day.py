@@ -22,7 +22,6 @@ class Day:
             added = True
 
         else:
-            # for each event in the range
 
             low = 0
             high = None
