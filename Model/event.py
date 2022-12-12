@@ -14,4 +14,7 @@ class Event:
         self.startTime = time(startHour, startMinute, 0)
         self.endTime = time(endHour, endMinute, 0)
 
+    def __eq__(self, other):
+        return self.title == other.title and self.description == other.description and self.startTime == other.startTime and self.endTime == other.endTime
 
+    

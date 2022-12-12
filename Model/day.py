@@ -40,6 +40,8 @@ class Day:
                 else:
                     low = middle + 1
             self.events.insert(low, newEvent)
-
+    
+    def __eq__(self, other):
+        return self.events == other.events and self.date == other.date
 
 

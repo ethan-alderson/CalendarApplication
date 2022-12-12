@@ -1,7 +1,7 @@
-
-from .month_view import MonthView
+from month_view import MonthView
 from Model.year import Year
 from Model.calendar import Calendar
+
 # from View.calendar_view import CalendarView
 
 class YearView:

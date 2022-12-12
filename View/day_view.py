@@ -2,7 +2,7 @@
 from Model.day import Day
 from Model.month import Month
 # from View.month_view import MonthView
-from Model.meeting import Meeting
+from Model import Meeting
 from Model.task import Task
 import re
 
@@ -22,8 +22,6 @@ class DayView:
             print(lineString + ' ' * (39 - len(lineString)) + '|')
 
         print('-' * 40)
-    
-    
     
     
     def handle_day_options(self, parentMonth: Month):
