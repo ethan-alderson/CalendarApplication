@@ -1,17 +1,20 @@
 
 from Model.calendar import Calendar
 from View.calendar_view import CalendarView
+
 import pickle
 
 
 class MenuView:
-
+    """Represents the UI view of the main menu
+    """
     def __init__(self):
         pass
 
     @staticmethod
     def display():
-        
+        """ Displays the main menu UI
+        """
         selectingOption = True
         while(selectingOption):
 
@@ -28,9 +31,10 @@ class MenuView:
             else:
                 selectingOption = False
             
-            
+        # create a calendar
         if option == 'a':
-                
+            
+            # get name input and check validity
             gettingName = True
             while(gettingName):
                 name = (input('Name your calendar to get started (only letters and _): '))
@@ -47,8 +51,10 @@ class MenuView:
                 if badName == False:
                     gettingName = False
             
+            # get first year in the range
             first = int(input('Input the first year in your calendar: '))
 
+            #  get the last year in the range
             gettingRangeSecond = True 
             while(gettingRangeSecond):
 
@@ -62,7 +68,8 @@ class MenuView:
             calendar = Calendar(name, first, last)
             calendarViewer = CalendarView(calendar)
             calendarViewer.handle_calendar_options()
-            
+        
+        # load the calendar with the given name
         if option == 'b':
                 
             gettingName = True
