@@ -20,7 +20,8 @@ from Model.day import Day
 
 
 class testCalendarDisplay(unittest.TestCase):
-
+    """tests for Calendar.display()
+    """
     def test_standard(self):
 
         capturedOutput1 = io.StringIO()
@@ -44,7 +45,8 @@ class testCalendarDisplay(unittest.TestCase):
         # self.assertEqual(calendar2View.display(), 'Welcome to your Calendar! This is a calendar of your events from 2022 to 2026!')
 
 class testYearDisplay(unittest.TestCase):
-
+    """tests for Year.display()
+    """
     def test_standard_year_display(self):
         capturedOutput1 = io.StringIO()
         sys.stdout = capturedOutput1
@@ -64,7 +66,8 @@ class testYearDisplay(unittest.TestCase):
         self.assertEqual(capturedOutput2.getvalue(), YearView.testDisplay(year2))
 
 class testMonthDisplay(unittest.TestCase):
-
+    """tests for Month.display()
+    """
     def test_standard_month_display(self):
         
         capturedOutput1 = io.StringIO()
@@ -85,7 +88,8 @@ class testMonthDisplay(unittest.TestCase):
         self.assertEqual(capturedOutput2.getvalue(), MonthView.testDisplay(month2))
 
 class testWeekDisplay(unittest.TestCase):
-
+    """tests for week display()
+    """
     def test_standard_month_display(self):
         
         month1 = Month("January", 2022, 1, 31)
@@ -108,7 +112,8 @@ class testWeekDisplay(unittest.TestCase):
         self.assertEqual(capturedOutput2.getvalue(), WeekView.testDisplay(week2))
 
 class testDayDisplay(unittest.TestCase):
-
+    """tests for Day.display()
+    """
     def test_standard_month_display(self):
 
         capturedOutput1 = io.StringIO()
