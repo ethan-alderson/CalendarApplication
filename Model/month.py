@@ -1,6 +1,8 @@
 
-from .day import Day
 from datetime import date
+
+from .day import Day
+
 
 class Month:
     """Represents a Month with a list of days

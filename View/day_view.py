@@ -1,13 +1,14 @@
 
+import re
+
+import sys
+import io
+
 from Model.day import Day
 from Model.month import Month
 from Model.meeting import Meeting
 from Model.task import Task
 
-import re
-
-import sys
-import io
 
 class DayView:
     """ Represents the UI view of a given day """

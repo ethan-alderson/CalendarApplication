@@ -1,10 +1,12 @@
-from Model.calendar import Calendar
-from View.year_view import YearView
 
 import pickle
 
 import sys
 import io
+
+from Model.calendar import Calendar
+from View.year_view import YearView
+
 
 class CalendarView:
     """represents the UI for the calendar

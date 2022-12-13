@@ -1,8 +1,8 @@
 
+import pickle
+
 from Model.calendar import Calendar
 from View.calendar_view import CalendarView
-
-import pickle
 
 
 class MenuView:

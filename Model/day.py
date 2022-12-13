@@ -1,5 +1,7 @@
-from .event import Event
+
 from datetime import date, timedelta
+
+from .event import Event
 
 class Day:
     def __init__(self, year, month, day):

@@ -1,9 +1,10 @@
 
+import sys
+import io
+
 from Model.month import Month
 from View.day_view import DayView
 
-import sys
-import io
 
 class WeekView:
     """Represents the GUI view of a given week"""

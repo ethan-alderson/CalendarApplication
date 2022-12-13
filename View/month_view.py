@@ -1,11 +1,12 @@
 
+import sys
+import io
+
 from Model.month import Month
 from Model.year import Year 
 from View.day_view import DayView
 from View.week_view import WeekView
 
-import sys
-import io
 
 class MonthView:
     """Summary: Represents the UI for the given month
