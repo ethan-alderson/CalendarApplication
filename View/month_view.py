@@ -3,14 +3,13 @@ from Model.month import Month
 from Model.year import Year 
 from View.day_view import DayView
 from View.week_view import WeekView
-# from View.year_view import YearView
 
 import sys
 import io
 
-
 class MonthView:
-    
+    """Summary: Represents the UI for the given month
+    """    
     def __init__(self, month: Month):
         self.month = month
 
@@ -46,6 +45,15 @@ class MonthView:
     
     @staticmethod
     def testDisplay(month: Month):
+        """test method, all it does is run display but reroute the print statement into a StringIO object. 
+        It does this so that we can check the display output in our tests even though it only prints to the console.
+
+        Args:
+            month (Month): The month to display
+
+        Returns:
+            String: The entire display in a single string
+        """
         capturedOutput = io.StringIO()
         sys.stdout = capturedOutput
         mv1 = MonthView(month)
@@ -77,6 +85,7 @@ class MonthView:
                 print('Invalid option, select again.')
                 continue
             
+            # switch to week view
             if option == 'a':
                 
                 gettingPosition = True
@@ -94,7 +103,8 @@ class MonthView:
                 
                 weekViewer = WeekView(self.month.weeks[position - 1])
                 weekViewer.handle_week_options(self.month)
-                
+            
+            # switch to day view
             if option == 'b':
                 
                 gettingPosition = True
@@ -113,6 +123,6 @@ class MonthView:
                 dayViewer = DayView(self.month.days[position - 1])
                 dayViewer.handle_day_options(self.month)
                 
-            
+            # exit the month loop, sends user back to the Year View
             if option == 'c':
                 viewingMonth = False
