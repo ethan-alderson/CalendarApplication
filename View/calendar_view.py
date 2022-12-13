@@ -2,6 +2,8 @@ from Model.calendar import Calendar
 from View.year_view import YearView
 import pickle
 
+import sys
+import io
 
 class CalendarView:
 
@@ -11,6 +13,16 @@ class CalendarView:
     def display(self):
         print(f'Welcome to your Calendar! This is a calendar of your events from {self.calendar.years[0].calendarYear} to {self.calendar.years[-1].calendarYear}!')
     
+    @staticmethod
+    def testDisplay(calendar: Calendar):
+        capturedOutput = io.StringIO()
+        sys.stdout = capturedOutput
+        cv1 = CalendarView(calendar)
+        cv1.display()
+        sys.stdout = sys.__stdout__
+
+        return capturedOutput.getvalue()
+
     def handle_calendar_options(self):
         viewingCalendar = True
         

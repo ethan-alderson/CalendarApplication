@@ -2,7 +2,8 @@
 from .month import Month
 
 class Year:
-
+    """Represents a year, with a list of months
+    """
     def __init__(self, calendarYear):
 
         self.calendarYear = calendarYear
@@ -24,7 +25,6 @@ class Year:
 
 
         # define Months
-        
         counter = 1
         for name, numberOfDays in MONTHSDICT.items():
             self.months.append(Month(name, calendarYear, counter, numberOfDays))

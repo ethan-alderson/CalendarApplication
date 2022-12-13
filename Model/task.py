@@ -3,7 +3,8 @@ from .event import Event
 
 # Represents a task
 class Task(Event):
-
+    """ Represents a task, subclass of Event
+    """
     def __init__(self, title, description, startHour, startMinute, endHour, endMinute, priority):
         super().__init__(title, description, startHour, startMinute, endHour, endMinute)
 

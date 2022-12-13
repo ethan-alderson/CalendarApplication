@@ -3,6 +3,9 @@ from Model.month import Month
 from View.day_view import DayView
 # from View.month_view import MonthView
 
+import sys
+import io
+
 class WeekView:
     """Represents the GUI view of a given week"""
     def __init__(self, days) -> None:
@@ -15,7 +18,7 @@ class WeekView:
         print('\r')
                   
         for day in self.days:
-            print('| ' + str(day.date) + ' ' * 27 + '|', end='') 
+            print('| ' + str(day.date) + ' ' * 27 + '|', end='')
         print('\r')
         
         
@@ -45,7 +48,17 @@ class WeekView:
 
         for day in self.days:
             print('-' * 40, end='')
-        
+    
+    @staticmethod
+    def testDisplay(week):
+        capturedOutput = io.StringIO()
+        sys.stdout = capturedOutput
+        wv1 = WeekView(week)
+        wv1.display()
+        sys.stdout = sys.__stdout__
+
+        return capturedOutput.getvalue()
+
     def handle_week_options(self, parentMonth: Month):
         
         viewingWeek = True
@@ -85,9 +98,7 @@ class WeekView:
                 
             if option == 'b':
                 viewingWeek = False
-                # monthViewer = MonthView(parentMonth)
-                # monthViewer.display()
-                # monthViewer.handle_month_options()
+                
                                
             
             

@@ -26,6 +26,7 @@ class Day:
 
         else:
 
+            # insert into sorted list of events
             low = 0
             high = None
 
@@ -40,8 +41,6 @@ class Day:
                 else:
                     low = middle + 1
             self.events.insert(low, newEvent)
-    
-    def __eq__(self, other):
-        return self.events == other.events and self.date == other.date
+
 
 

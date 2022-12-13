@@ -5,36 +5,36 @@ from Model.event import Event
 
 # tests get magic index
 class testAddEvent(unittest.TestCase):
-    
-    # tests standard inputs
-    def test_input_into_empty_day(self):
+    pass
+    # # tests standard inputs
+    # def test_input_into_empty_day(self):
 
-        j1 = Day(2022, 1, 1)
-        j1temp = Day(2022, 1, 1)
-        earliestEvent = Event("Earliest event", "this is the earliest event", 6, 0, 7, 0)
-        # secondEarliestEvent = Event("Earliest event", "this is the earliest event", 6, 30, 7, 30)
-        # thirdEarliestEvent = Event("Earliest event", "this is the earliest event", 8, 0, 9, 0)
+    #     j1 = Day(2022, 1, 1)
+    #     j1temp = Day(2022, 1, 1)
+    #     earliestEvent = Event("Earliest event", "this is the earliest event", 6, 0, 7, 0)
+    #     # secondEarliestEvent = Event("Earliest event", "this is the earliest event", 6, 30, 7, 30)
+    #     # thirdEarliestEvent = Event("Earliest event", "this is the earliest event", 8, 0, 9, 0)
 
-        j1temp.events = [earliestEvent]
-        j1.addEvent(earliestEvent)
-        self.assertEqual(j1temp, j1)
+    #     j1temp.events = [earliestEvent]
+    #     j1.addEvent(earliestEvent)
+    #     self.assertEqual(j1temp, j1)
 
 
-    def test_input_into_sorted(self):
+    # def test_input_into_sorted(self):
         
-        j1 = Day(2022, 1, 1)
-        earliestEvent = Event("Earliest event", "this is the earliest event", 6, 0, 7, 0)
-        secondEarliestEvent = Event("Earliest event", "this is the earliest event", 7, 30, 8, 30)
-        thirdEarliestEvent = Event("Earliest event", "this is the earliest event", 8, 0, 9, 0)
+    #     j1 = Day(2022, 1, 1)
+    #     earliestEvent = Event("Earliest event", "this is the earliest event", 6, 0, 7, 0)
+    #     secondEarliestEvent = Event("Earliest event", "this is the earliest event", 7, 30, 8, 30)
+    #     thirdEarliestEvent = Event("Earliest event", "this is the earliest event", 8, 0, 9, 0)
         
-        j1.addEvent(thirdEarliestEvent)
-        orderedList = [earliestEvent, secondEarliestEvent, thirdEarliestEvent]
-        j1.addEvent(secondEarliestEvent)
+    #     j1.addEvent(thirdEarliestEvent)
+    #     orderedList = [earliestEvent, secondEarliestEvent, thirdEarliestEvent]
+    #     j1.addEvent(secondEarliestEvent)
 
-        counter = 0
-        for event in j1.events:
-            self.assertEqual(event, orderedList[counter])
-            counter += 1
+    #     counter = 0
+    #     for event in j1.events:
+    #         self.assertEqual(event, orderedList[counter])
+    #         counter += 1
 
         
 

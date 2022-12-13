@@ -5,6 +5,9 @@ from View.day_view import DayView
 from View.week_view import WeekView
 # from View.year_view import YearView
 
+import sys
+import io
+
 
 class MonthView:
     
@@ -17,7 +20,6 @@ class MonthView:
         print('-' * 91)
         print('| ' + self.month.name + ' ' * (88 - len(self.month.name)) + '|')
         print('-' * 91)
-
                 
         # print each week
         for week in self.month.weeks:
@@ -41,7 +43,16 @@ class MonthView:
 
             print('\r')
             print(len(week) * 13 * '-')
-        
+    
+    @staticmethod
+    def testDisplay(month: Month):
+        capturedOutput = io.StringIO()
+        sys.stdout = capturedOutput
+        mv1 = MonthView(month)
+        mv1.display()
+        sys.stdout = sys.__stdout__
+
+        return capturedOutput.getvalue()
 
     def handle_month_options(self, parentYear: Year):
         """ Handles user inputs for the month

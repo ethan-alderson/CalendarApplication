@@ -3,12 +3,14 @@ from .day import Day
 from datetime import date
 
 class Month:
-
+    """Represents a Month with a list of days
+    """
     # Constructor for a month, in a year, containing a certain number of empty days
     def __init__(self, name, year, monthNumber, monthLength):
 
         self.name = name
         self.days = []
+        self.year = year
         self.monthNumber = monthNumber
         self.monthLength = monthLength
 

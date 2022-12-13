@@ -2,9 +2,12 @@
 from Model.day import Day
 from Model.month import Month
 # from View.month_view import MonthView
-from Model import Meeting
+from Model.meeting import Meeting
 from Model.task import Task
 import re
+
+import sys
+import io
 
 class DayView:
     """ Represents the UI view of a given day """
@@ -23,7 +26,16 @@ class DayView:
 
         print('-' * 40)
     
-    
+    @staticmethod
+    def testDisplay(day: Day):
+        capturedOutput = io.StringIO()
+        sys.stdout = capturedOutput
+        dv1 = DayView(day)
+        dv1.display()
+        sys.stdout = sys.__stdout__
+
+        return capturedOutput.getvalue()
+
     def handle_day_options(self, parentMonth: Month):
 
         viewingDay = True

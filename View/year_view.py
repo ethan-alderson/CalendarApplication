@@ -1,6 +1,11 @@
-from month_view import MonthView
+
+import sys
+import io
+
+from .month_view import MonthView
 from Model.year import Year
 from Model.calendar import Calendar
+
 
 # from View.calendar_view import CalendarView
 
@@ -18,6 +23,17 @@ class YearView:
         for month in self.year.months:
             mv = MonthView(month)
             mv.display()
+
+    @staticmethod
+    def testDisplay(year: Year):
+        capturedOutput = io.StringIO()
+        sys.stdout = capturedOutput
+        yv1 = YearView(year)
+        yv1.display()
+        sys.stdout = sys.__stdout__
+
+        return capturedOutput.getvalue()
+            
         
 
     def handle_year_options(self, parentCalendar: Calendar):
