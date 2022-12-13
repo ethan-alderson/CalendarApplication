@@ -41,9 +41,6 @@ class testCalendarDisplay(unittest.TestCase):
         self.assertEqual(capturedOutput1.getvalue(), CalendarView.testDisplay(calendar1))
         self.assertEqual(capturedOutput2.getvalue(), CalendarView.testDisplay(calendar2))
 
-        # self.assertEqual(calendar1View.display(), 'Welcome to your Calendar! This is a calendar of your events from 2021 to 2025!')
-        # self.assertEqual(calendar2View.display(), 'Welcome to your Calendar! This is a calendar of your events from 2022 to 2026!')
-
 class testYearDisplay(unittest.TestCase):
     """tests for Year.display()
     """
