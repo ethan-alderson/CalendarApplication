@@ -1,7 +1,6 @@
 
 from Model.month import Month
 from View.day_view import DayView
-# from View.month_view import MonthView
 
 import sys
 import io
@@ -12,7 +11,8 @@ class WeekView:
         self.days = days
 
     def display(self):    
-        
+        """Displays the UI of the week to the user
+        """
         for day in self.days:
             print('-' * 40, end='')
         print('\r')
@@ -51,6 +51,15 @@ class WeekView:
     
     @staticmethod
     def testDisplay(week):
+        """test method, all it does is run display but reroute the print statement into a StringIO object. 
+        It does this so that we can check the display output in our tests even though it only prints to the console.
+
+        Args:
+            week (List of days): The days to display
+
+        Returns:
+            String: The entire display in a single string
+        """
         capturedOutput = io.StringIO()
         sys.stdout = capturedOutput
         wv1 = WeekView(week)
@@ -60,7 +69,11 @@ class WeekView:
         return capturedOutput.getvalue()
 
     def handle_week_options(self, parentMonth: Month):
-        
+        """ Handles the user inputs for the current weekview
+
+        Args:
+            parentMonth (Month): The month that this week came from
+        """
         viewingWeek = True
         
         while (viewingWeek):
@@ -78,6 +91,7 @@ class WeekView:
                 print('Invalid option, select again.')
                 continue
             
+            # transition to day
             if option == 'a':
                 
                 gettingPosition = True
@@ -95,7 +109,8 @@ class WeekView:
                 
                 dayViewer = DayView(self.days[position - 1])
                 dayViewer.handle_day_options(parentMonth)
-                
+
+            # go back to the previous month view 
             if option == 'b':
                 viewingWeek = False
                 
