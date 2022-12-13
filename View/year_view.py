@@ -7,10 +7,9 @@ from Model.year import Year
 from Model.calendar import Calendar
 
 
-# from View.calendar_view import CalendarView
-
 class YearView:
-    
+    """Represents the UI for the given year
+    """
     def __init__(self, year: Year):
         self.year = year
         
@@ -26,6 +25,15 @@ class YearView:
 
     @staticmethod
     def testDisplay(year: Year):
+        """test method, all it does is run display but reroute the print statement into a StringIO object. 
+        It does this so that we can check the display output in our tests even though it only prints to the console.
+
+        Args:
+            year (Year): The year to display
+
+        Returns:
+            String: The entire display in a single string
+        """
         capturedOutput = io.StringIO()
         sys.stdout = capturedOutput
         yv1 = YearView(year)
@@ -35,9 +43,12 @@ class YearView:
         return capturedOutput.getvalue()
             
         
-
     def handle_year_options(self, parentCalendar: Calendar):
-        
+        """Handles the user inputs for the current yearview
+
+        Args:
+            parentCalendar (Calendar): the calendar that this year came from
+        """
         viewingYear = True
         
         while (viewingYear):
@@ -54,6 +65,7 @@ class YearView:
                 print('Invalid option, select again.')
                 continue
             
+            # transition to the monthview that they want
             if option == 'a':
                 
                 gettingPosition = True
@@ -72,9 +84,7 @@ class YearView:
                 
                 monthViewer = MonthView(self.year.months[position - 1])
                 monthViewer.handle_month_options(self.year)
-                
+            
+            # exit the current view, going back to the previous calendar view
             if option == 'b':
                 viewingYear = False
-                # calendarViewer = CalendarView(parentCalendar)
-                # calendarViewer.display()
-                # calendarViewer.handle_calendar_options()
