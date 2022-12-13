@@ -1,9 +1,9 @@
 
 from Model.day import Day
 from Model.month import Month
-# from View.month_view import MonthView
 from Model.meeting import Meeting
 from Model.task import Task
+
 import re
 
 import sys
@@ -15,7 +15,10 @@ class DayView:
         self.day = day
 
     def display(self):
-        
+        """ Displays the current day
+
+        VOID
+        """
         print('-' * 40)
         print('| ' + str(self.day.date) + ' ' * 27 + '|') 
         print('-' * 40)
@@ -28,6 +31,15 @@ class DayView:
     
     @staticmethod
     def testDisplay(day: Day):
+        """test method, all it does is run display but reroute the print statement into a StringIO object. 
+        It does this so that we can check the display output in our tests even though it only prints to the console.
+
+        Args:
+            day (Day): The day to display
+
+        Returns:
+            String: The entire display in a single string
+        """
         capturedOutput = io.StringIO()
         sys.stdout = capturedOutput
         dv1 = DayView(day)
@@ -37,13 +49,18 @@ class DayView:
         return capturedOutput.getvalue()
 
     def handle_day_options(self, parentMonth: Month):
+        """Handles the user options for the given day
 
+        Args:
+            parentMonth (Month): The month that this day is from
+        """
         viewingDay = True
         
         while (viewingDay):
                 
             self.display()
             
+            # display initial options
             print(f'Date: {self.day.date}')
             print(f'a) Add Event')
             print(f'b) Remove Event')
@@ -55,17 +72,21 @@ class DayView:
                 print('Invalid option, select again.')
                 continue
             
+            # add Event
             if option == 'a':
                 self.addEventHandler()
-                
+            
+            # remove Event
             if option == 'b':
                 self.removeEventHandler()
             
+            # this sends us back to the previous loop, which is always the parent MonthView in the case of DayView
             if option == 'c':
                 viewingDay = False
         
     def addEventHandler(self):
-        
+        """ Handles adding an event
+        """
         suboption = ''
         
         while suboption != 'a' and suboption != 'b' and suboption != 'c':
@@ -82,14 +103,14 @@ class DayView:
             title = input('Enter event title: ')
             description = input('Enter the event description: ')
             
-            # use regex to check time input format
+            # use regex to check starttime input format
             gettingStart = True
             while gettingStart:
 
                 startTimeInput = input('Enter the event start time (No need for AM or PM, format in hh:mm): ')
                 
                 test1 = re.match('^[0-9]{2}:[0-9]{2}$', startTimeInput)
-                test2 = re.match('^[1-9]{1}:[0-9]{2}$', startTimeInput)
+
 
                 if not test1 and not test2:
                     print('Time must be hh:mm or h:mm')
@@ -115,14 +136,13 @@ class DayView:
                 else:
                     gettingPM = False
 
-            # use regex to check time input format
+            # use regex to check endtime input format
             gettingEnd = True
             while gettingEnd:
 
                 endTimeInput = input('Enter the event end time (No need for AM or PM, format in hh:mm): ')
 
                 test1 = re.match('^[0-9]{2}:[0-9]{2}$', endTimeInput)
-                test2 = re.match('^[1-9]{1}:[0-9]{2}$', endTimeInput)
 
                 if not test1 and not test2:
                     print('Time must be hh:mm or h:mm')
@@ -185,7 +205,8 @@ class DayView:
             self.handle_day_options()
 
     def removeEventHandler(self):
-        
+        """ Handles removing an event from self.date
+        """
         suboption = input(f'Name the event you\'d like to remove: ')
         
         initialLength = len(self.day.events)
