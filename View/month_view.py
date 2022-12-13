@@ -55,13 +55,15 @@ class MonthView:
         Returns:
             String: The entire display in a single string
         """
-        capturedOutput = io.StringIO()
-        sys.stdout = capturedOutput
+        printed = io.StringIO()
+        sys.stdout = printed
+        
         mv1 = MonthView(month)
         mv1.display()
+
         sys.stdout = sys.__stdout__
 
-        return capturedOutput.getvalue()
+        return printed.getvalue()
 
     def handle_month_options(self, parentYear: Year):
         """ Handles user inputs for the month

@@ -61,13 +61,15 @@ class WeekView:
         Returns:
             String: The entire display in a single string
         """
-        capturedOutput = io.StringIO()
-        sys.stdout = capturedOutput
+        printed = io.StringIO()
+        sys.stdout = printed
+
         wv1 = WeekView(week)
         wv1.display()
+        
         sys.stdout = sys.__stdout__
 
-        return capturedOutput.getvalue()
+        return printed.getvalue()
 
     def handle_week_options(self, parentMonth: Month):
         """ Handles the user inputs for the current weekview

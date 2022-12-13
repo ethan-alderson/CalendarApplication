@@ -32,13 +32,13 @@ class CalendarView:
         Returns:
             String: The full displayed string of the calendar
         """
-        capturedOutput = io.StringIO()
-        sys.stdout = capturedOutput
+        printed = io.StringIO()
+        sys.stdout = printed
         cv1 = CalendarView(calendar)
         cv1.display()
         sys.stdout = sys.__stdout__
 
-        return capturedOutput.getvalue()
+        return printed.getvalue()
 
     def handle_calendar_options(self):
         """Handles user inputs in the calendar menu

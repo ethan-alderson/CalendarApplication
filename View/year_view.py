@@ -34,13 +34,15 @@ class YearView:
         Returns:
             String: The entire display in a single string
         """
-        capturedOutput = io.StringIO()
-        sys.stdout = capturedOutput
+        printed = io.StringIO()
+        sys.stdout = printed
+        
         yv1 = YearView(year)
         yv1.display()
+
         sys.stdout = sys.__stdout__
 
-        return capturedOutput.getvalue()
+        return printed.getvalue()
             
         
     def handle_year_options(self, parentCalendar: Calendar):

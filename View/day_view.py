@@ -41,13 +41,15 @@ class DayView:
         Returns:
             String: The entire display in a single string
         """
-        capturedOutput = io.StringIO()
-        sys.stdout = capturedOutput
+        printed = io.StringIO()
+        sys.stdout = printed
+
         dv1 = DayView(day)
         dv1.display()
+        
         sys.stdout = sys.__stdout__
 
-        return capturedOutput.getvalue()
+        return printed.getvalue()
 
     def handle_day_options(self, parentMonth: Month):
         """Handles the user options for the given day
